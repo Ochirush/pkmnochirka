@@ -3,7 +3,7 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        String filePath = "src\\main\\resources\\my_card.txt"; // Укажите здесь имя файла покемона
+        String filePath = "src\\main\\resources\\my_card.txt";
 
         try {
 
