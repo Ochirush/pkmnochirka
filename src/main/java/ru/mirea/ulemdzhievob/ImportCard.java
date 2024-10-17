@@ -14,7 +14,7 @@ public class ImportCard {
             return null;
         }
 
-        String filePath = "C:\\Users\\Ochir\\IdeaProjects\\pkmn\\src\\main\\resources\\" + evolvesFromName + ".txt";
+        String filePath = "src\\main\\resources\\" + evolvesFromName + ".txt";
         try {
             return loadCard(filePath);
         } catch (IOException e) {
