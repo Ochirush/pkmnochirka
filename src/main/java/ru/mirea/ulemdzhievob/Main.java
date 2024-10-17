@@ -47,11 +47,11 @@ public class Main {
             }
 
             else {
-                System.out.println("Не удалось загрузить карту покемона.");
+                System.out.println("не удалось загрузить карту");
             }
         }
         catch (IOException e) {
-            System.err.println("Ошибка загрузки покемона: " + e.getMessage());
+            System.err.println("ошибка загрузки покемона: " + e.getMessage());
         }
         catch (Exception e) {
             System.err.println("Ошибка: " + e.getMessage());
