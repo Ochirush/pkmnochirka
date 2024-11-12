@@ -1,7 +1,10 @@
 package ru.mirea.ulemdzhievob;
+import java.io.Serial;
+import java.io.Serializable;
 
-public class AttackSkill {
+public class AttackSkill implements Serializable {
     protected String name;
+    private static final long serialVersionUID = 1L;
     protected String description;
     protected String cost;
     protected int damage;

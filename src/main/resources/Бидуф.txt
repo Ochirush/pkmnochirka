@@ -1,7 +1,8 @@
 BASIC
-Бидуф
+Bidoof
 70
 WATER
+120
 -
 2/Rollout/aa/30
 FIGHTING

@@ -1,7 +1,8 @@
 STAGE1
-Бибарел
+bibarel
 120
 WATER
+121
 Бидуф
 3/TailSmash/aa/100
 FIGHTING

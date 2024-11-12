@@ -1,66 +1,75 @@
 package ru.mirea.ulemdzhievob;
+
+import java.util.List;
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
-
-public class Card {
-    protected PokemonStage Stage;
-    protected String Name;
-    protected int Hp;
-    protected EnergyType PokemonType;
+public class Card implements Serializable {
+    private static final long serialVersionUID = 1L;
+    protected PokemonStage stage;
+    protected String name;
+    protected int hp;
+    protected EnergyType pokemonType;
     protected Card evolvesFrom;
-    protected List<AttackSkill> Skills;
+    protected List<AttackSkill> skills;
     protected EnergyType weaknessType;
     protected EnergyType resistanceType;
     protected String retreatCost;
     protected String gameset;
     protected char regulationMark;
     protected Student pokemonOwner;
-    public Card(PokemonStage Stage, String Name, int Hp, EnergyType PokemonType, Card evolvesFrom, List<AttackSkill> Skills,
+    protected String number;
+
+    public Card(PokemonStage stage, String name, int hp, EnergyType pokemonType,String number, Card evolvesFrom, List<AttackSkill> skills,
                 EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameset, char regulationMark,
-                Student pokemonOwner) {
-        this.Stage = Stage;
-        this.Name = Name;
-        this.Hp = Hp;
-        this.PokemonType = PokemonType;
+                Student pokemonOwner ) {
+        this.stage = stage;
+        this.name = name;
+        this.hp = hp;
+        this.pokemonType = pokemonType;
         this.evolvesFrom = evolvesFrom;
-        this.Skills = Skills;
+        this.skills = skills;
         this.weaknessType = weaknessType;
         this.resistanceType = resistanceType;
         this.retreatCost = retreatCost;
         this.gameset = gameset;
         this.regulationMark = regulationMark;
         this.pokemonOwner = pokemonOwner;
-    }
-    public PokemonStage getStage() {
-        return Stage;
+        this.number = number;
     }
 
-    public void setStage(PokemonStage Stage) {
-        this.Stage = Stage;
+
+    public PokemonStage getStage() {
+        return stage;
+    }
+
+    public void setStage(PokemonStage stage) {
+        this.stage = stage;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getHp() {
-        return Hp;
+        return hp;
     }
 
-    public void setHp(int Hp) {
-        this.Hp = Hp;
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     public EnergyType getPokemonType() {
-        return PokemonType;
+        return pokemonType;
     }
 
-    public void setPokemonType(EnergyType PokemonType) {
-        this.PokemonType = PokemonType;
+    public void setPokemonType(EnergyType pokemonType) {
+        this.pokemonType = pokemonType;
     }
 
     public Card getEvolvesFrom() {
@@ -72,11 +81,11 @@ public class Card {
     }
 
     public List<AttackSkill> getSkills() {
-        return Skills;
+        return skills;
     }
 
-    public void setSkills(List<AttackSkill> Skills) {
-        this.Skills = Skills;
+    public void setSkills(List<AttackSkill> skills) {
+        this.skills = skills;
     }
 
     public EnergyType getWeaknessType() {
@@ -126,14 +135,24 @@ public class Card {
     public void setPokemonOwner(Student pokemonOwner) {
         this.pokemonOwner = pokemonOwner;
     }
+
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) { // Метод для установки номера карты
+        this.number = number;
+    }
+
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Имя: ").append(Name).append("\n");
-        sb.append("Этап: ").append(Stage).append("\n");
-        sb.append("HP: ").append(Hp).append("\n");
-        sb.append("Тип покемона: ").append(PokemonType).append("\n");
+        sb.append("Имя: ").append(name).append("\n");
+        sb.append("Этап: ").append(stage).append("\n");
+        sb.append("HP: ").append(hp).append("\n");
+        sb.append("Тип покемона: ").append(pokemonType).append("\n");
+        sb.append("Номер карты: ").append(number).append("\n");
         sb.append("Эволюция из: ").append(evolvesFrom != null ? evolvesFrom.getName() : "нет").append("\n");
-        sb.append("Навыки: ").append(Skills != null ? Skills.toString() : "нет").append("\n");
+        sb.append("Навыки: ").append(skills != null ? skills.toString() : "нет").append("\n");
         sb.append("Слабость к: ").append(weaknessType).append("\n");
         sb.append("Сопротивляемость к: ").append(resistanceType).append("\n");
         sb.append("Стоимость отступления: ").append(retreatCost).append("\n");
@@ -141,10 +160,9 @@ public class Card {
         sb.append("Регуляционный знак: ").append(regulationMark).append("\n");
         sb.append("Владелец покемона: ").append(pokemonOwner.getFullName()).append("\n");
         return sb.toString();
-
     }
+
     public String getEvolvesFromName() {
-        return evolvesFrom != null ? evolvesFrom.getName() : "Нет эволюции"; // Возвращает имя или сообщение
+        return evolvesFrom != null ? evolvesFrom.getName() : "Нет эволюции";
     }
-
 }

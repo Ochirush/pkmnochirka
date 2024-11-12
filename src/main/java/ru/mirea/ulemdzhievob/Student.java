@@ -1,51 +1,80 @@
 package ru.mirea.ulemdzhievob;
 
-public class Student {
-    protected String firstname;
-    protected String surname;
-    protected String familyname;
-    protected String group;
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.UUID;
 
-    public Student(String firstname, String surname, String familyname, String group) {
-        this.firstname = firstname;
-        this.surname = surname;
-        this.familyname = familyname;
+public class Student implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L; // Версия сериализации
+
+    private UUID id;
+    private String firstName;
+    private String surName;
+    private String familyName;
+    private String group;
+
+    // Конструктор с id
+    public Student(UUID id, String firstName, String surName, String familyName, String group) {
+        this.id = id;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.familyName = familyName;
         this.group = group;
     }
 
-    public String getFirstname() {
-        return firstname;
+    // Конструктор без id
+    public Student(String firstName, String surName, String familyName, String group) {
+
+        this.firstName = firstName;
+        this.surName = surName;
+        this.familyName = familyName;
+        this.group = group;
     }
 
-    public String getSurname() {
-        return surname;
+    // Пустой конструктор
+    public Student() {
+
     }
 
-    public String getFamilyname() {
-        return familyname;
+    public UUID getId() {
+        return id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public void setSurName(String surName) {
+        this.surName = surName;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
     }
 
     public String getGroup() {
         return group;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setFamilyname(String familyname) {
-        this.familyname = familyname;
-    }
-
     public void setGroup(String group) {
         this.group = group;
     }
+
+
     public String getFullName() {
-        return surname + "/" + firstname + "/" + familyname+ "/" + group;
+        return surName + "/" + firstName + "/" + familyName + "/" + group;
     }
 }
-
