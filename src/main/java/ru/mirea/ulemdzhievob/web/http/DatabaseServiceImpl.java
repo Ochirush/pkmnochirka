@@ -95,7 +95,7 @@ public class DatabaseServiceImpl implements DatabaseService {
                 return new Card(pokemonStage, name, hp, pokemonType, number, evolvesFrom, skills, weaknessType, resistanceType, retreatCost, gameSet, regulationMark, pokemonOwner);
             }
         }
-        return null; // Если карта не найдена
+        return null; 
     }
 
     @Override
@@ -117,11 +117,11 @@ public class DatabaseServiceImpl implements DatabaseService {
             preparedStatement.setString(3, patronymic);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-                // Получаем ID студента и преобразуем его в UUID
+               
                 UUID id = (UUID) resultSet.getObject("id");
                 String group = resultSet.getString("group");
 
-                // Создаем и возвращаем объект Student с полученными данными
+                
                 return new Student(id, firstName, lastName, patronymic, group);
             }
         }
@@ -136,7 +136,7 @@ public class DatabaseServiceImpl implements DatabaseService {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                // Теперь мы извлекаем id из результата
+                
                 UUID studentId = (UUID) resultSet.getObject("id");
                 String group = resultSet.getString("group");
                 String firstName = resultSet.getString("firstName");
