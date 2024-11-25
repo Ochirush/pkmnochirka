@@ -21,9 +21,9 @@ public class Card implements Serializable {
     protected Student pokemonOwner;
     protected String number;
 
-    public Card(PokemonStage stage, String name, int hp, EnergyType pokemonType,String number, Card evolvesFrom, List<AttackSkill> skills,
+    public Card(PokemonStage stage, String name, int hp, EnergyType pokemonType, Card evolvesFrom, List<AttackSkill> skills,
                 EnergyType weaknessType, EnergyType resistanceType, String retreatCost, String gameset, char regulationMark,
-                Student pokemonOwner ) {
+                Student pokemonOwner,String number ) {
         this.stage = stage;
         this.name = name;
         this.hp = hp;

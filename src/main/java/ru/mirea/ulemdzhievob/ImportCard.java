@@ -1,4 +1,6 @@
     package ru.mirea.ulemdzhievob;
+    import ru.mirea.ulemdzhievob.web.http.PkmnHttpClient;
+    import com.fasterxml.jackson.databind.JsonNode;
     import java.io.BufferedReader;
     import java.io.FileReader;
     import java.io.IOException;
@@ -7,6 +9,9 @@
     import java.util.ArrayList;
     import java.util.List;
     import java.util.UUID;
+    import java.util.stream.Collectors;
+    import java.util.Set;
+    import java.lang.module.ModuleReader;
 
 
     public class ImportCard {
@@ -46,7 +51,6 @@
                     String nameLine = br.readLine();
                     String hpLine = br.readLine();
                     String typeLine = br.readLine();
-                    String numberLine = br.readLine();
                     String evolvesFromLine = br.readLine();
                     String skillsLine = br.readLine();
                     String weaknessLine = br.readLine();
@@ -55,6 +59,7 @@
                     String gamesetLine = br.readLine();
                     String regulationMarkLine = br.readLine();
                     String studentLine = br.readLine();
+                    String numberLine = br.readLine();
 
 
                     PokemonStage stage = PokemonStage.valueOf(stageLine.trim().toUpperCase());
@@ -81,14 +86,31 @@
                             studentData[2].trim(), // Отчество
                             studentData[3].trim()  // Группа
                     );
+                    PkmnHttpClient pkmnHttpClient = new PkmnHttpClient();
+                    JsonNode cardData = pkmnHttpClient.getPokemonCard(name, number);
+                    JsonNode attacksArray = cardData.path("data").get(0).path("attacks");
+                    int i = 0;
+                    for (AttackSkill attackSkill : skills) {
+                        if (i < attacksArray.size()) {
+                            String apiDescription = attacksArray.get(i).path("text").asText(); // Описание из API
+                            String apiName = attacksArray.get(i).path("name").asText(); // Имя атаки из API
+                            attackSkill.setDescription(apiDescription); // Устанавливаем описание из API
+                            attackSkill.setName(apiName); // Устанавливаем имя атаки из API
+                        }
+                        i++;
+                    }
 
-                    return new Card(stage, name, hp, energyType, number, evolvesFrom, skills, weaknessType, resistanceType, retreatCost, gameset, regulationMark, pokemonOwner);
+                    return new Card(stage, name, hp, energyType, evolvesFrom, skills, weaknessType, resistanceType, retreatCost, gameset, regulationMark, pokemonOwner, number);
                 } catch (Exception e) {
 
                     System.out.println("Error loading card data: " + e.getMessage());
                     throw e;
                 }
+
         }
+
+
+
 
         private static List<AttackSkill> parseSkills(String skillsLine) {
             List<AttackSkill> skills = new ArrayList<>();
@@ -96,12 +118,13 @@
             for (String skillData : skillsData) {
                 String[] attributes = skillData.split("/");
                 if (attributes.length == 4) {
-                    String name = attributes[0].trim();
-                    String description = attributes[1].trim();
-                    String cost = attributes[2].trim();
+                    String name = attributes[1].trim();
+                    String description = attributes[2].trim();
+                    String cost = attributes[0].trim();
                     int damage = Integer.parseInt(attributes[3].trim());
 
-                    skills.add(new AttackSkill(name, description, cost, damage));
+
+                    skills.add(new AttackSkill( description, name, cost   , damage));
                 }
             }
             return skills;

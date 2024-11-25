@@ -3,6 +3,8 @@ package ru.mirea.ulemdzhievob;
 import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 import java.util.stream.Collectors;
+
+import ru.mirea.ulemdzhievob.web.http.ExportCard;
 import ru.mirea.ulemdzhievob.web.http.PokemonTcgAPI;
 import ru.mirea.ulemdzhievob.web.http.PkmnHttpClient;
 import ru.mirea.ulemdzhievob.Card;
@@ -16,6 +18,7 @@ public class Main {
         try {
 
             Card card = ImportCard.loadCard(filePath);
+
 
             if (card != null) {
 
@@ -31,6 +34,8 @@ public class Main {
 
                 printCardInfo(card);
                 updateSkills(card, apiCard);
+                ExportCard exportCard = new ExportCard();
+                exportCard.saveCardToFile(card);
             } else {
                 System.out.println("Не удалось загрузить карту");
             }
@@ -57,7 +62,9 @@ public class Main {
         System.out.println("Набор: " + card.getGameset());
         System.out.println("Марка: " + card.getRegulationMark());
         System.out.println("Эволюционирует из: " + card.getEvolvesFromName());
+        System.out.println(card.getEvolvesFrom());
     }
+
 
     private static void updateSkills(Card card, JsonNode apiCard) {
         if (apiCard.has("data") && apiCard.get("data").isArray()) {
@@ -65,11 +72,11 @@ public class Main {
                 if (crd.has("attacks") && crd.get("attacks").isArray()) {
                     for (JsonNode attack : crd.get("attacks")) {
                         String newDescription = attack.get("text").asText();
-                        String targetName = attack.get("name").asText(); // Название атаки
+                        String targetName = attack.get("name").asText();
                         for (AttackSkill skill : card.getSkills()) {
                             if (skill.getName().equals(targetName)) {
-                                skill.setDescription(newDescription); // Изменяем описание
-                                break; // Завершаем цикл после первого совпадения
+                                skill.setDescription(newDescription);
+                                break;
                             }
                         }
                     }

@@ -2,7 +2,6 @@ BASIC
 Bidoof
 70
 WATER
-120
 -
 2/Rollout/aa/30
 FIGHTING
@@ -11,3 +10,4 @@ FIGHTING
 Brilliant Stars
 F
 Улемджиев/Очир/Баатровчи/БСБО-05-23
+120

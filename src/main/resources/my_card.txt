@@ -2,8 +2,7 @@ STAGE1
 bibarel
 120
 WATER
-121
-Бидуф
+Bidoof
 3/TailSmash/aa/100
 FIGHTING
 -
@@ -11,3 +10,4 @@ FIGHTING
 Brilliant Stars
 F
 Улемджиев/Очир/Баатрович/БСБО-05-23
+121

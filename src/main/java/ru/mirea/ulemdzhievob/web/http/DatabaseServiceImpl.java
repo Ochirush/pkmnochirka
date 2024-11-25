@@ -92,7 +92,7 @@ public class DatabaseServiceImpl implements DatabaseService {
                 else
                     pokemonOwner = null;
                 String number = resultSet.getString("card_number");
-                return new Card(pokemonStage, name, hp, pokemonType, number, evolvesFrom, skills, weaknessType, resistanceType, retreatCost, gameSet, regulationMark, pokemonOwner);
+                return new Card(pokemonStage, name, hp, pokemonType,  evolvesFrom, skills, weaknessType, resistanceType, retreatCost, gameSet, regulationMark, pokemonOwner, number);
             }
         }
         return null; 
