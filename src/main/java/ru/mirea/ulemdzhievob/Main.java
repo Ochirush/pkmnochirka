@@ -36,6 +36,8 @@ public class Main {
                 updateSkills(card, apiCard);
                 ExportCard exportCard = new ExportCard();
                 exportCard.saveCardToFile(card);
+                DatabaseServiceImpl databaseService = new DatabaseServiceImpl();
+                databaseService.saveCardToDatabase(card);
             } else {
                 System.out.println("Не удалось загрузить карту");
             }
