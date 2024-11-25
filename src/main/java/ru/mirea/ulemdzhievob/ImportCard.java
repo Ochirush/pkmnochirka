@@ -78,13 +78,13 @@
 
 
                     String[] studentData = studentLine.split("/");
-                    UUID studentId = UUID.randomUUID(); // Генерация нового UUID. Замените на реальный UUID, если доступен
+                    UUID studentId = UUID.randomUUID();
                     Student pokemonOwner = new Student(
-                            studentId, // Передаем сгенерированный UUID
-                            studentData[0].trim(), // Имя
-                            studentData[1].trim(), // Фамилия
-                            studentData[2].trim(), // Отчество
-                            studentData[3].trim()  // Группа
+                            studentId, 
+                            studentData[0].trim(), 
+                            studentData[1].trim(), 
+                            studentData[2].trim(), 
+                            studentData[3].trim()  
                     );
                     PkmnHttpClient pkmnHttpClient = new PkmnHttpClient();
                     JsonNode cardData = pkmnHttpClient.getPokemonCard(name, number);
@@ -92,10 +92,10 @@
                     int i = 0;
                     for (AttackSkill attackSkill : skills) {
                         if (i < attacksArray.size()) {
-                            String apiDescription = attacksArray.get(i).path("text").asText(); // Описание из API
-                            String apiName = attacksArray.get(i).path("name").asText(); // Имя атаки из API
-                            attackSkill.setDescription(apiDescription); // Устанавливаем описание из API
-                            attackSkill.setName(apiName); // Устанавливаем имя атаки из API
+                            String apiDescription = attacksArray.get(i).path("text").asText(); 
+                            String apiName = attacksArray.get(i).path("name").asText(); 
+                            attackSkill.setDescription(apiDescription); 
+                            attackSkill.setName(apiName); 
                         }
                         i++;
                     }
