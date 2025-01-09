@@ -1,5 +1,4 @@
-package ru.mirea.ulemdzhievob;
-import java.io.Serial;
+package ru.mirea.ulemdzhievob.models;
 import java.io.Serializable;
 
 public class AttackSkill implements Serializable {

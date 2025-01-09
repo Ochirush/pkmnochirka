@@ -2,16 +2,12 @@ package ru.mirea.ulemdzhievob.web.http;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.postgresql.util.PGobject;
-import ru.mirea.ulemdzhievob.*;
-import ru.mirea.ulemdzhievob.ImportCard;
+import ru.mirea.ulemdzhievob.models.*;
 import ru.mirea.ulemdzhievob.web.http.jdbc.DatabaseService;
 
-import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 import java.util.UUID;

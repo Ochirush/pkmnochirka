@@ -1,4 +1,4 @@
-package ru.mirea.ulemdzhievob;
+package ru.mirea.ulemdzhievob.models;
 
 public enum EnergyType {
     FIRE("Огонь"),

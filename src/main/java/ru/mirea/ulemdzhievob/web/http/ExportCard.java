@@ -1,6 +1,6 @@
 package ru.mirea.ulemdzhievob.web.http;
 
-import ru.mirea.ulemdzhievob.Card;
+import ru.mirea.ulemdzhievob.models.Card;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

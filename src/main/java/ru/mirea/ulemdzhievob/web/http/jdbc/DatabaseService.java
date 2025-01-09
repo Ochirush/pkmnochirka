@@ -1,7 +1,7 @@
 package ru.mirea.ulemdzhievob.web.http.jdbc;
 
-import ru.mirea.ulemdzhievob.Card;
-import ru.mirea.ulemdzhievob.Student;
+import ru.mirea.ulemdzhievob.models.Card;
+import ru.mirea.ulemdzhievob.models.Student;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 

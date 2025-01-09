@@ -1,9 +1,7 @@
-package ru.mirea.ulemdzhievob;
+package ru.mirea.ulemdzhievob.models;
 
 import java.util.List;
-import java.io.Serial;
 import java.io.Serializable;
-import java.util.List;
 
 public class Card implements Serializable {
     private static final long serialVersionUID = 1L;

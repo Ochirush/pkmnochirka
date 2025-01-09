@@ -1,4 +1,4 @@
-package ru.mirea.ulemdzhievob;
+package ru.mirea.ulemdzhievob.models;
 
 import java.io.Serial;
 import java.io.Serializable;

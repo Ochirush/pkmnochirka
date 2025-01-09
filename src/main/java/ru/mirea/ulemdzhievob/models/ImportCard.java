@@ -1,4 +1,4 @@
-    package ru.mirea.ulemdzhievob;
+    package ru.mirea.ulemdzhievob.models;
     import ru.mirea.ulemdzhievob.web.http.PkmnHttpClient;
     import com.fasterxml.jackson.databind.JsonNode;
     import java.io.BufferedReader;
@@ -9,9 +9,6 @@
     import java.util.ArrayList;
     import java.util.List;
     import java.util.UUID;
-    import java.util.stream.Collectors;
-    import java.util.Set;
-    import java.lang.module.ModuleReader;
 
 
     public class ImportCard {
